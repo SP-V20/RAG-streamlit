@@ -1,4 +1,5 @@
 name: Sync to Hugging Face hub
+
 on:
   push:
     branches: [main]
@@ -7,12 +8,20 @@ on:
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           lfs: true
+
       - name: Push to hub
         env:
-          HF_TOKEN: ${{ secrets.HuggingFaceToken }}
-        run: git push https://SP-V20:$HuggingFaceToken@huggingface.co/spaces/SP-V20/RAG main
+          HF_TOKEN: ${{ secrets.HUGGINGFACETOKEN }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git remote set-url origin https://SP-V20:${HF_TOKEN}@huggingface.co/spaces/SP-V20/RAG
+
+          git push origin main
