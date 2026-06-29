@@ -1,4 +1,4 @@
-
+## Project structure
 
 your-space/
 │── app.py              # Streamlit UI (ENTRY POINT for Spaces)
@@ -7,9 +7,6 @@ your-space/
 │── data/
 │     └── LLM Cheatsheet.pdf
 
-
-
-## Installation
 
 ### Prerequisites
 
