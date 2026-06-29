@@ -15,13 +15,13 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-      - name: Push to hub
+      - name: Force push to hub
         env:
           HF_TOKEN: ${{ secrets.HUGGINGFACETOKEN }}
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-
+      
           git remote set-url origin https://SP-V20:${HF_TOKEN}@huggingface.co/spaces/SP-V20/RAG
-
-          git push origin main
+      
+          git push origin main --force
